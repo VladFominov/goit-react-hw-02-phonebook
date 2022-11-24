@@ -1,16 +1,17 @@
+import {Li} from './ContactList.styled'
 const ContactList = ({ contacts, onDelete }) => {
   return (
     <ul>
       {' '}
       {contacts.map(({ id, name, number }) => {
         return (
-          <li key={id}>
+          <Li key={id}>
             {' '}
             {name}: {number}
             <button type="button" onClick={() => onDelete(id)}>
               Delete
             </button>
-          </li>
+          </Li>
         );
       })}
     </ul>

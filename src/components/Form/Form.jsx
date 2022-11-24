@@ -1,5 +1,13 @@
 import { Component } from 'react';
-import { InputForm,Input,InputNumber, FormContainer, BtnAdd, Span } from './Form.styled';
+import {
+  InputForm,
+  Label,
+  Input,
+  InputNumber,
+  FormContainer,
+  BtnAdd,
+  Span,
+} from './Form.styled';
 
 class Form extends Component {
   state = { name: '', number: '' };
@@ -12,9 +20,6 @@ class Form extends Component {
   handelSubmit = e => {
     e.preventDefault();
     this.props.onSubmit(this.state);
-    // if (e.target.value === ) {
-    //   return alert('is already in contacts');
-    // }
     this.reset();
   };
 
@@ -26,7 +31,7 @@ class Form extends Component {
     return (
       <FormContainer>
         <InputForm onSubmit={this.handelSubmit}>
-          <label>
+          <Label>
             <Span>Name</Span>
             <Input
               type="text"
@@ -37,8 +42,8 @@ class Form extends Component {
               title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
               required
             />
-          </label>
-          <label>
+          </Label>
+          <Label>
             <Span>Number</Span>
             <InputNumber
               type="tel"
@@ -49,7 +54,7 @@ class Form extends Component {
               title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
               required
             />
-          </label>
+          </Label>
           <BtnAdd type="submit">Add contact</BtnAdd>
         </InputForm>
       </FormContainer>

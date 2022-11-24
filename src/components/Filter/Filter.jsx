@@ -1,14 +1,15 @@
+import { FilterContainer, Input } from './Filter.styled';
 const Filter = ({ filter, handelFilterChange }) => {
   return (
-    <div>
+    <FilterContainer>
       <span>Find contacts by name</span>
-      <input
+      <Input
         type="text"
         name="filter"
         value={filter}
         onChange={handelFilterChange}
       />
-    </div>
+    </FilterContainer>
   );
 };
 
