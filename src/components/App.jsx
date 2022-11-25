@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Form from './Form/Form'
-import ContactList from './ContactList/ContactList'
-import Filter from './Filter/Filter'
+import Form from './Form/Form';
+import ContactList from './ContactList/ContactList';
+import Filter from './Filter/Filter';
 
 export class App extends Component {
   state = {
@@ -19,25 +19,30 @@ export class App extends Component {
   };
 
   formSubmitHandler = data => {
-    if (this.state.contacts.some(({ name }) => name === data.name)) { return alert(data.name +  " is already in contacts") } 
+    if (this.state.contacts.some(({ name }) => name === data.name)) {
+      return alert(data.name + ' is already in contacts');
+    }
+    console.log(data);
+  
   };
 
   filteredContact = () => {
     return this.state.contacts.filter(({ name }) => {
-      return name.toLowerCase().includes(this.state.filter.toLowerCase())
+      return name.toLowerCase().includes(this.state.filter.toLowerCase());
       
-    })
-  }
+    });
+  };
 
-  onDelete = (contactId) => {
-    this.setState((state) => {
+  onDelete = contactId => {
+    this.setState(state => {
       return {
         contacts: state.contacts.filter(contact => contact.id !== contactId),
       };
-})
+    });
   };
 
   render() {
+    const filteredContacts = this.filteredContact();
     return (
       <div
         style={{
@@ -58,12 +63,10 @@ export class App extends Component {
           handelFilterChange={this.handelFilterChange}
         />
         <ContactList
-          contacts={this.filteredContact()}
+          contacts={filteredContacts}
           onDelete={this.onDelete}
         />
       </div>
     );
   }
 }
-
-

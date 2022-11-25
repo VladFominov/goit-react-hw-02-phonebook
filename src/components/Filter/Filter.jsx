@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { FilterContainer, Input } from './Filter.styled';
 const Filter = ({ filter, handelFilterChange }) => {
   return (
@@ -14,3 +16,8 @@ const Filter = ({ filter, handelFilterChange }) => {
 };
 
 export default Filter;
+
+Filter.propTypes = {
+  handelFilterChange: PropTypes.func.isRequired,
+  filter: PropTypes.string,
+};
