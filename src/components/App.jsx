@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Form from './Form/Form';
 import ContactList from './ContactList/ContactList';
 import Filter from './Filter/Filter';
+import { nanoid } from 'nanoid';
 
 export class App extends Component {
   state = {
@@ -22,8 +23,11 @@ export class App extends Component {
     if (this.state.contacts.some(({ name }) => name === data.name)) {
       return alert(data.name + ' is already in contacts');
     }
-    console.log(data);
-  
+    this.setState(prevState => {
+      return {
+        contacts: [...prevState.contacts, {...data, id: nanoid()}]
+    }
+  })
   };
 
   filteredContact = () => {
